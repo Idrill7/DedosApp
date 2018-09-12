@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Dedos
 //
-//  Created by alejandro gonzalez casado on 21/9/17.
-//  Copyright © 2017 Idrilplays. All rights reserved.
+//  Created by alejandro gonzalez casado .
+//  Copyright © 2018 Idrilplays. All rights reserved.
 //
 
 import UIKit
@@ -51,8 +51,7 @@ class ViewController: UIViewController
         
         // número al azar entre 1 y 5 y que sea INT
         let randomNumber1To5 = Int(arc4random_uniform(5) + 1)
-        // Indicación del número del usuario
-        let userNumber: Int = Int(TextField.text!)!
+      
         // Para que salga DEDO - DEDOS
         if randomNumber1To5 == 1 { dedoS.text = "DEDO"}
         else { dedoS.text = "DEDOS" }
@@ -66,8 +65,13 @@ class ViewController: UIViewController
             alertController4.addAction(OKaction4)
             present(alertController4, animated: true, completion: nil)}*/
         
-        //Para ver si es correcto o no
+        // Indicación del número del usuario
+        if let fieldStr = TextField.text, let userNumber: Int = Int(fieldStr) {
+        
     
+        //Para ver si es correcto o no
+
+        
         if userNumber < 0  || userNumber > 5 || userNumber == 0{
             incorrecto.text = "error"
             correcto.text? = " "
@@ -98,6 +102,15 @@ class ViewController: UIViewController
                 alertController3.addAction(OKaction3)
                 present(alertController3, animated: true, completion: nil)
             }
+        } else {
+            answerNumber.text = "¿?"
+            incorrecto.text = "error"
+            let alertController3 : UIAlertController = UIAlertController(title: "¡Inserte un numero!", message: "¡Buena suerte!", preferredStyle: .actionSheet)
+            let OKaction3 : UIAlertAction = UIAlertAction(title: "Volver", style: .destructive, handler: nil)
+            alertController3.addAction(OKaction3)
+            present(alertController3, animated: true, completion: nil)
+        }
+        
          /*else {
             incorrecto.text = ""
             correcto.text = ""
